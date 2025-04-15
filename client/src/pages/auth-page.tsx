@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLocation } from "wouter";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useAuth } from "@/hooks/use-auth";
 import { 
   Card, 
   CardContent, 
@@ -86,28 +87,25 @@ const AuthPage = () => {
     },
   });
 
+  // Get authentication hooks
+  const { loginMutation, registerMutation, user } = useAuth();
+  
+  // Redirect if already logged in
+  useEffect(() => {
+    if (user) {
+      setLocation("/");
+    }
+  }, [user, setLocation]);
+
   // Login form submission
   const onLoginSubmit = async (data: LoginFormValues) => {
     setIsLoading(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      // Success toast and redirect
-      toast({
-        title: "Login successful",
-        description: "Welcome back to AI Review Hub!",
-      });
-      
+      await loginMutation.mutateAsync(data);
       setLocation("/");
     } catch (error) {
-      // Handle errors
-      toast({
-        title: "Login failed",
-        description: "Please check your credentials and try again.",
-        variant: "destructive",
-      });
+      // Error handling is done in the mutation's onError callback
     } finally {
       setIsLoading(false);
     }
@@ -118,23 +116,22 @@ const AuthPage = () => {
     setIsLoading(true);
     
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Create user registration data from form values
+      const userData = {
+        name: data.name,
+        username: data.username,
+        email: data.email,
+        password: data.password,
+        points: 0,
+        role: "user",
+        avatar: `https://ui-avatars.com/api/?name=${encodeURIComponent(data.name)}&background=random`,
+        createdAt: new Date(),
+      };
       
-      // Success toast and redirect
-      toast({
-        title: "Registration successful",
-        description: "Your account has been created. Welcome to AI Review Hub!",
-      });
-      
+      await registerMutation.mutateAsync(userData);
       setLocation("/");
     } catch (error) {
-      // Handle errors
-      toast({
-        title: "Registration failed",
-        description: "There was an error creating your account. Please try again.",
-        variant: "destructive",
-      });
+      // Error handling is done in the mutation's onError callback
     } finally {
       setIsLoading(false);
     }

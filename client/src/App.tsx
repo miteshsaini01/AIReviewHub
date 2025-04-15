@@ -3,6 +3,7 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./lib/queryClient";
 import { Toaster } from "./components/ui/toaster";
 import { AuthProvider } from "./hooks/use-auth";
+import { ProtectedRoute } from "./lib/protected-route";
 import NotFound from "./pages/not-found";
 import Home from "./pages/home";
 import Header from "./components/layout/Header";
@@ -20,11 +21,11 @@ function Router() {
     <Switch>
       <Route path="/" component={Home} />
       <Route path="/leaderboard" component={Leaderboard} />
-      <Route path="/add-review" component={AddReview} />
+      <ProtectedRoute path="/add-review" component={AddReview} />
       <Route path="/model/:id" component={AiModel} />
       <Route path="/news" component={News} />
       <Route path="/rewards" component={Rewards} />
-      <Route path="/profile" component={Profile} />
+      <ProtectedRoute path="/profile" component={Profile} />
       <Route path="/auth" component={AuthPage} />
       <Route component={NotFound} />
     </Switch>

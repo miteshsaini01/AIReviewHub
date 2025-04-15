@@ -1,15 +1,30 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Search, Menu, Plus } from "lucide-react";
+import { Search, Menu, Plus, LogOut, User } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { 
+  DropdownMenu, 
+  DropdownMenuContent, 
+  DropdownMenuItem, 
+  DropdownMenuSeparator, 
+  DropdownMenuTrigger 
+} from "@/components/ui/dropdown-menu";
+import { useAuth } from "@/hooks/use-auth";
 
 const Header = () => {
   const [location] = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { user, logoutMutation } = useAuth();
+  const [, setLocation] = useLocation();
 
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!mobileMenuOpen);
+  };
+  
+  const handleLogout = async () => {
+    await logoutMutation.mutateAsync();
+    setLocation("/");
   };
 
   return (
@@ -48,24 +63,51 @@ const Header = () => {
               <Search className="h-5 w-5 text-neutral-600" />
             </Button>
             
-            <Link href="/add-review">
-              <Button className="hidden md:flex items-center" size="sm">
-                <Plus className="mr-2 h-4 w-4" />
-                Add Review
-              </Button>
-            </Link>
+            {user && (
+              <Link href="/add-review">
+                <Button className="hidden md:flex items-center" size="sm">
+                  <Plus className="mr-2 h-4 w-4" />
+                  Add Review
+                </Button>
+              </Link>
+            )}
             
-            {/* Show either profile or login based on authentication status */}
-            <Link href="/profile">
-              <Avatar className="h-8 w-8 cursor-pointer">
-                <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=256" alt="User avatar" />
-                <AvatarFallback>U</AvatarFallback>
-              </Avatar>
-            </Link>
-            
-            <Link href="/auth" className="hidden md:block">
-              <Button variant="outline" size="sm">Login / Register</Button>
-            </Link>
+            {/* Show either profile dropdown or login based on authentication status */}
+            {user ? (
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Avatar className="h-8 w-8 cursor-pointer">
+                    <AvatarImage src={user.avatar} alt={`${user.name} avatar`} />
+                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                  <div className="flex items-center justify-start gap-2 p-2">
+                    <div className="flex flex-col space-y-1 leading-none">
+                      <p className="font-medium">{user.name}</p>
+                      <p className="text-sm text-muted-foreground">
+                        {user.email}
+                      </p>
+                    </div>
+                  </div>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem asChild>
+                    <Link href="/profile" className="flex w-full cursor-pointer items-center">
+                      <User className="mr-2 h-4 w-4" />
+                      <span>Profile</span>
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem onClick={handleLogout}>
+                    <LogOut className="mr-2 h-4 w-4" />
+                    <span>Logout</span>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+            ) : (
+              <Link href="/auth" className="hidden md:block">
+                <Button variant="outline" size="sm">Login / Register</Button>
+              </Link>
+            )}
             
             <Button 
               variant="ghost" 
@@ -95,12 +137,27 @@ const Header = () => {
             <Link href="/rewards" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/rewards' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
               Rewards
             </Link>
-            <Link href="/add-review" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/add-review' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Add Review
-            </Link>
-            <Link href="/auth" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/auth' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Login / Register
-            </Link>
+            
+            {user ? (
+              <>
+                <Link href="/add-review" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/add-review' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+                  Add Review
+                </Link>
+                <Link href="/profile" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/profile' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+                  Profile
+                </Link>
+                <button 
+                  onClick={handleLogout} 
+                  className="block w-full text-left px-3 py-2 rounded-md text-base font-medium text-neutral-600 hover:bg-primary-50"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link href="/auth" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/auth' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+                Login / Register
+              </Link>
+            )}
           </div>
         </div>
       )}
