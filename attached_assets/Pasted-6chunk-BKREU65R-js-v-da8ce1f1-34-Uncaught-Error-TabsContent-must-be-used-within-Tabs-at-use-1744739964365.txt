@@ -1,0 +1,46 @@
+6chunk-BKREU65R.js?v=da8ce1f1:34 Uncaught Error: `TabsContent` must be used within `Tabs`
+    at useContext2 (chunk-BKREU65R.js?v=da8ce1f1:34:13)
+    at @radix-ui_react-tabs.js?v=da8ce1f1:445:21
+    at renderWithHooks (chunk-WERSD76P.js?v=da8ce1f1:11548:26)
+    at updateForwardRef (chunk-WERSD76P.js?v=da8ce1f1:14325:28)
+    at beginWork (chunk-WERSD76P.js?v=da8ce1f1:15946:22)
+    at HTMLUnknownElement.callCallback2 (chunk-WERSD76P.js?v=da8ce1f1:3674:22)
+    at Object.invokeGuardedCallbackDev (chunk-WERSD76P.js?v=da8ce1f1:3699:24)
+    at invokeGuardedCallback (chunk-WERSD76P.js?v=da8ce1f1:3733:39)
+    at beginWork$1 (chunk-WERSD76P.js?v=da8ce1f1:19765:15)
+    at performUnitOfWork (chunk-WERSD76P.js?v=da8ce1f1:19198:20)Understand this error
+3chunk-WERSD76P.js?v=da8ce1f1:14032 The above error occurred in the <TabsContent> component:
+
+    at https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@radix-ui_react-tabs.js?v=da8ce1f1:444:13
+    at _c5 (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/src/components/ui/tabs.tsx:72:12)
+    at div
+    at _c9 (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/src/components/ui/card.tsx:114:12)
+    at div
+    at _c (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/src/components/ui/card.tsx:20:11)
+    at div
+    at div
+    at div
+    at div
+    at Profile (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/src/pages/profile.tsx:43:58)
+    at Route (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=da8ce1f1:323:16)
+    at Switch (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/wouter.js?v=da8ce1f1:379:17)
+    at Router
+    at main
+    at div
+    at QueryClientProvider (https://c239af5f-b704-49c0-97db-8f9464941bfe-00-22l98kthdu2j6.worf.replit.dev/@fs/home/runner/workspace/node_modules/.vite/deps/@tanstack_react-query.js?v=da8ce1f1:2805:3)
+    at App
+
+Consider adding an error boundary to your tree to customize error handling behavior.
+Visit https://reactjs.org/link/error-boundaries to learn more about error boundaries.
+logCapturedError @ chunk-WERSD76P.js?v=da8ce1f1:14032Understand this error
+chunk-WERSD76P.js?v=da8ce1f1:9129 Uncaught Error: `TabsContent` must be used within `Tabs`
+    at useContext2 (chunk-BKREU65R.js?v=da8ce1f1:34:13)
+    at @radix-ui_react-tabs.js?v=da8ce1f1:445:21
+    at renderWithHooks (chunk-WERSD76P.js?v=da8ce1f1:11548:26)
+    at updateForwardRef (chunk-WERSD76P.js?v=da8ce1f1:14325:28)
+    at beginWork (chunk-WERSD76P.js?v=da8ce1f1:15946:22)
+    at beginWork$1 (chunk-WERSD76P.js?v=da8ce1f1:19753:22)
+    at performUnitOfWork (chunk-WERSD76P.js?v=da8ce1f1:19198:20)
+    at workLoopSync (chunk-WERSD76P.js?v=da8ce1f1:19137:13)
+    at renderRootSync (chunk-WERSD76P.js?v=da8ce1f1:19116:15)
+    at recoverFromConcurrentError (chunk-WERSD76P.js?v=da8ce1f1:18736:28)Understand this error

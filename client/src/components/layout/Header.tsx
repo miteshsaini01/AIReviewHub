@@ -28,25 +28,17 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/">
-              <a className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Home
-              </a>
+            <Link href="/" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Home
             </Link>
-            <Link href="/leaderboard">
-              <a className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/leaderboard' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Leaderboard
-              </a>
+            <Link href="/leaderboard" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/leaderboard' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Leaderboard
             </Link>
-            <Link href="/news">
-              <a className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/news' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                News
-              </a>
+            <Link href="/news" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/news' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              News
             </Link>
-            <Link href="/rewards">
-              <a className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/rewards' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Rewards
-              </a>
+            <Link href="/rewards" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/rewards' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Rewards
             </Link>
           </nav>
 
@@ -63,11 +55,16 @@ const Header = () => {
               </Button>
             </Link>
             
+            {/* Show either profile or login based on authentication status */}
             <Link href="/profile">
               <Avatar className="h-8 w-8 cursor-pointer">
                 <AvatarImage src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=256" alt="User avatar" />
                 <AvatarFallback>U</AvatarFallback>
               </Avatar>
+            </Link>
+            
+            <Link href="/auth" className="hidden md:block">
+              <Button variant="outline" size="sm">Login / Register</Button>
             </Link>
             
             <Button 
@@ -86,30 +83,23 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/">
-              <a className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Home
-              </a>
+            <Link href="/" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Home
             </Link>
-            <Link href="/leaderboard">
-              <a className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/leaderboard' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Leaderboard
-              </a>
+            <Link href="/leaderboard" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/leaderboard' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Leaderboard
             </Link>
-            <Link href="/news">
-              <a className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/news' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                News
-              </a>
+            <Link href="/news" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/news' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              News
             </Link>
-            <Link href="/rewards">
-              <a className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/rewards' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Rewards
-              </a>
+            <Link href="/rewards" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/rewards' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Rewards
             </Link>
-            <Link href="/add-review">
-              <a className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/add-review' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-                Add Review
-              </a>
+            <Link href="/add-review" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/add-review' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Add Review
+            </Link>
+            <Link href="/auth" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/auth' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
+              Login / Register
             </Link>
           </div>
         </div>

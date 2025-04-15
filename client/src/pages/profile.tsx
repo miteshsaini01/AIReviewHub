@@ -113,127 +113,129 @@ const Profile = () => {
                 </Tabs>
               </CardHeader>
               <CardContent>
-                <TabsContent value="profile" className="space-y-6">
-                  <div>
-                    <h3 className="text-lg font-bold mb-3">About Me</h3>
-                    <p className="text-neutral-600">
-                      AI enthusiast and UX designer passionate about the intersection of artificial intelligence and human-centered design. I enjoy testing and reviewing various AI tools to find the best ones for creative workflows.
-                    </p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-bold mb-3">Achievements</h3>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-                      <AchievementCard 
-                        icon={<Star className="h-5 w-5" />}
-                        title="Top Reviewer"
-                        description="Contributed 5+ high-quality reviews"
-                      />
-                      <AchievementCard 
-                        icon={<Award className="h-5 w-5" />}
-                        title="Helpful Guide"
-                        description="Received 25+ helpful votes"
-                      />
-                      <AchievementCard 
-                        icon={<MessageSquare className="h-5 w-5" />}
-                        title="Engaged Commenter"
-                        description="Left comments on 10+ reviews"
-                      />
-                      <AchievementCard 
-                        icon={<Clock className="h-5 w-5" />}
-                        title="Early Adopter"
-                        description="Joined in the first month"
-                        locked={false}
-                      />
-                    </div>
-                  </div>
-                </TabsContent>
-                
-                <TabsContent value="reviews">
-                  <h3 className="text-lg font-bold mb-4">My Reviews</h3>
-                  <div className="space-y-4">
-                    {isReviewsLoading ? (
-                      // Loading skeletons
-                      Array.from({ length: 3 }).map((_, index) => (
-                        <UserReviewSkeleton key={index} />
-                      ))
-                    ) : userReviews && userReviews.length > 0 ? (
-                      // Actual reviews
-                      userReviews.map(review => (
-                        <UserReviewCard 
-                          key={review.id} 
-                          reviewId={review.id} 
-                          modelId={review.modelId}
-                          title={review.title}
-                          content={review.content}
-                          rating={review.rating}
-                          createdAt={review.createdAt}
-                          helpfulVotes={review.helpfulVotes}
-                        />
-                      ))
-                    ) : (
-                      <div className="text-center py-8 bg-neutral-50 rounded-lg">
-                        <p className="text-neutral-500 mb-4">You haven't written any reviews yet.</p>
-                        <Link href="/leaderboard">
-                          <Button>Write Your First Review</Button>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </TabsContent>
-                
-                <TabsContent value="rewards">
-                  <div className="space-y-6">
+                <Tabs defaultValue={activeTab} value={activeTab} onValueChange={setActiveTab} className="w-full">
+                  <TabsContent value="profile" className="space-y-6">
                     <div>
-                      <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-lg font-bold">Points History</h3>
-                        <Badge variant="outline">{user.points} Total Points</Badge>
-                      </div>
-                      
-                      <Card>
-                        <CardContent className="p-0">
-                          <div className="divide-y">
-                            <PointsHistoryItem 
-                              action="Wrote a review for Midjourney"
-                              points={50}
-                              date="3 days ago"
-                            />
-                            <PointsHistoryItem 
-                              action="Received helpful vote"
-                              points={5}
-                              date="5 days ago"
-                            />
-                            <PointsHistoryItem 
-                              action="Added image to review"
-                              points={20}
-                              date="5 days ago"
-                            />
-                            <PointsHistoryItem 
-                              action="Wrote a review for Claude"
-                              points={50}
-                              date="1 week ago"
-                            />
-                            <PointsHistoryItem 
-                              action="Received helpful vote"
-                              points={5}
-                              date="2 weeks ago"
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
+                      <h3 className="text-lg font-bold mb-3">About Me</h3>
+                      <p className="text-neutral-600">
+                        AI enthusiast and UX designer passionate about the intersection of artificial intelligence and human-centered design. I enjoy testing and reviewing various AI tools to find the best ones for creative workflows.
+                      </p>
                     </div>
                     
                     <div>
-                      <h3 className="text-lg font-bold mb-4">Redeemed Rewards</h3>
-                      <div className="bg-neutral-100 rounded-lg p-8 text-center">
-                        <p className="text-neutral-600 mb-4">You haven't redeemed any rewards yet.</p>
-                        <Link href="/rewards">
-                          <Button>Explore Rewards</Button>
-                        </Link>
+                      <h3 className="text-lg font-bold mb-3">Achievements</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                        <AchievementCard 
+                          icon={<Star className="h-5 w-5" />}
+                          title="Top Reviewer"
+                          description="Contributed 5+ high-quality reviews"
+                        />
+                        <AchievementCard 
+                          icon={<Award className="h-5 w-5" />}
+                          title="Helpful Guide"
+                          description="Received 25+ helpful votes"
+                        />
+                        <AchievementCard 
+                          icon={<MessageSquare className="h-5 w-5" />}
+                          title="Engaged Commenter"
+                          description="Left comments on 10+ reviews"
+                        />
+                        <AchievementCard 
+                          icon={<Clock className="h-5 w-5" />}
+                          title="Early Adopter"
+                          description="Joined in the first month"
+                          locked={false}
+                        />
                       </div>
                     </div>
-                  </div>
-                </TabsContent>
+                  </TabsContent>
+                  
+                  <TabsContent value="reviews">
+                    <h3 className="text-lg font-bold mb-4">My Reviews</h3>
+                    <div className="space-y-4">
+                      {isReviewsLoading ? (
+                        // Loading skeletons
+                        Array.from({ length: 3 }).map((_, index) => (
+                          <UserReviewSkeleton key={index} />
+                        ))
+                      ) : userReviews && userReviews.length > 0 ? (
+                        // Actual reviews
+                        userReviews.map(review => (
+                          <UserReviewCard 
+                            key={review.id} 
+                            reviewId={review.id} 
+                            modelId={review.modelId}
+                            title={review.title}
+                            content={review.content}
+                            rating={review.rating}
+                            createdAt={review.createdAt}
+                            helpfulVotes={review.helpfulVotes}
+                          />
+                        ))
+                      ) : (
+                        <div className="text-center py-8 bg-neutral-50 rounded-lg">
+                          <p className="text-neutral-500 mb-4">You haven't written any reviews yet.</p>
+                          <Link href="/leaderboard">
+                            <Button>Write Your First Review</Button>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </TabsContent>
+                  
+                  <TabsContent value="rewards">
+                    <div className="space-y-6">
+                      <div>
+                        <div className="flex justify-between items-center mb-4">
+                          <h3 className="text-lg font-bold">Points History</h3>
+                          <Badge variant="outline">{user.points} Total Points</Badge>
+                        </div>
+                        
+                        <Card>
+                          <CardContent className="p-0">
+                            <div className="divide-y">
+                              <PointsHistoryItem 
+                                action="Wrote a review for Midjourney"
+                                points={50}
+                                date="3 days ago"
+                              />
+                              <PointsHistoryItem 
+                                action="Received helpful vote"
+                                points={5}
+                                date="5 days ago"
+                              />
+                              <PointsHistoryItem 
+                                action="Added image to review"
+                                points={20}
+                                date="5 days ago"
+                              />
+                              <PointsHistoryItem 
+                                action="Wrote a review for Claude"
+                                points={50}
+                                date="1 week ago"
+                              />
+                              <PointsHistoryItem 
+                                action="Received helpful vote"
+                                points={5}
+                                date="2 weeks ago"
+                              />
+                            </div>
+                          </CardContent>
+                        </Card>
+                      </div>
+                      
+                      <div>
+                        <h3 className="text-lg font-bold mb-4">Redeemed Rewards</h3>
+                        <div className="bg-neutral-100 rounded-lg p-8 text-center">
+                          <p className="text-neutral-600 mb-4">You haven't redeemed any rewards yet.</p>
+                          <Link href="/rewards">
+                            <Button>Explore Rewards</Button>
+                          </Link>
+                        </div>
+                      </div>
+                    </div>
+                  </TabsContent>
+                </Tabs>
               </CardContent>
             </Card>
           </div>
@@ -308,7 +310,7 @@ const UserReviewCard = ({ reviewId, modelId, title, content, rating, createdAt, 
   }
 
   if (!model) {
-    return null;
+    return <UserReviewSkeleton />;
   }
 
   return (
