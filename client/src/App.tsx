@@ -12,6 +12,7 @@ import AiModel from "./pages/ai-model";
 import News from "./pages/news";
 import Rewards from "./pages/rewards";
 import Profile from "./pages/profile";
+import AuthPage from "./pages/auth-page";
 
 function Router() {
   return (
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/news" component={News} />
       <Route path="/rewards" component={Rewards} />
       <Route path="/profile" component={Profile} />
+      <Route path="/auth" component={AuthPage} />
       <Route component={NotFound} />
     </Switch>
   );

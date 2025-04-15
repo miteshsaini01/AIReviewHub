@@ -18,11 +18,9 @@ const RecentReviewsSection = () => {
     <section className="mb-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold font-heading">Recent Reviews</h2>
-        <Link href="/reviews">
-          <a className="text-primary hover:text-primary-700 flex items-center">
-            View all
-            <ArrowRight className="ml-1 h-4 w-4" />
-          </a>
+        <Link href="/reviews" className="text-primary hover:text-primary-700 flex items-center">
+          View all
+          <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
       </div>
 
@@ -92,7 +90,7 @@ const ReviewCard = ({ reviewId }: ReviewCardProps) => {
               <div>
                 <h3 className="font-medium text-neutral-900">{user.name}</h3>
                 <div className="text-sm text-neutral-500">
-                  Reviewed <Link href={`/model/${model.id}`}><a className="text-primary font-medium">{model.name}</a></Link>
+                  Reviewed <Link href={`/model/${model.id}`} className="text-primary font-medium">{model.name}</Link>
                 </div>
               </div>
               <Rating value={review.rating} />

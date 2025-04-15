@@ -318,10 +318,8 @@ const UserReviewCard = ({ reviewId, modelId, title, content, rating, createdAt, 
       <CardContent className="p-5">
         <div className="flex justify-between items-start mb-3">
           <div>
-            <Link href={`/model/${modelId}`}>
-              <a className="text-primary hover:text-primary-700 font-medium">
-                {model.name}
-              </a>
+            <Link href={`/model/${modelId}`} className="text-primary hover:text-primary-700 font-medium">
+              {model.name}
             </Link>
             <div className="text-sm text-neutral-500">{formatRelativeTime(createdAt)}</div>
           </div>

@@ -35,11 +35,9 @@ const LeaderboardSection = () => {
     <section className="mb-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold font-heading">AI Leaderboard</h2>
-        <Link href="/leaderboard">
-          <a className="text-primary hover:text-primary-700 flex items-center">
-            View all
-            <ArrowRight className="ml-1 h-4 w-4" />
-          </a>
+        <Link href="/leaderboard" className="text-primary hover:text-primary-700 flex items-center">
+          View all
+          <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
       </div>
 

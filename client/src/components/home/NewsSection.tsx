@@ -15,11 +15,9 @@ const NewsSection = () => {
     <section className="mb-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-2xl font-bold font-heading">AI News & Updates</h2>
-        <Link href="/news">
-          <a className="text-primary hover:text-primary-700 flex items-center">
-            View all
-            <ArrowRight className="ml-1 h-4 w-4" />
-          </a>
+        <Link href="/news" className="text-primary hover:text-primary-700 flex items-center">
+          View all
+          <ArrowRight className="ml-1 h-4 w-4" />
         </Link>
       </div>
 
@@ -75,8 +73,8 @@ const NewsCard = ({ id, category, title, summary, imageUrl, createdAt }: NewsCar
         <p className="mt-2 text-sm text-neutral-600 flex-1">{summary}</p>
         <div className="mt-4 flex justify-between items-center text-sm">
           <span className="text-neutral-500">{formatRelativeTime(createdAt)}</span>
-          <Link href={`/news/${id}`}>
-            <a className="text-primary hover:text-primary-700 font-medium">Read more</a>
+          <Link href={`/news/${id}`} className="text-primary hover:text-primary-700 font-medium">
+            Read more
           </Link>
         </div>
       </CardContent>
