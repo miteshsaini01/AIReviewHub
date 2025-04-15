@@ -9,8 +9,12 @@ import {
   insertRewardSchema 
 } from "@shared/schema";
 import { ZodError } from "zod";
+import { setupAuth } from "./auth";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Setup authentication routes
+  setupAuth(app);
+  
   const apiRouter = express.Router();
   
   // User routes

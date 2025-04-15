@@ -28,28 +28,28 @@ const Footer = () => {
             <h3 className="text-white font-bold mb-4">Explore</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <Link href="/leaderboard">
-                  <a className="hover:text-white">AI Models</a>
+                <Link href="/leaderboard" className="hover:text-white">
+                  AI Models
                 </Link>
               </li>
               <li>
-                <Link href="/leaderboard">
-                  <a className="hover:text-white">Leaderboard</a>
+                <Link href="/leaderboard" className="hover:text-white">
+                  Leaderboard
                 </Link>
               </li>
               <li>
-                <Link href="/add-review">
-                  <a className="hover:text-white">Reviews</a>
+                <Link href="/add-review" className="hover:text-white">
+                  Reviews
                 </Link>
               </li>
               <li>
-                <Link href="/news">
-                  <a className="hover:text-white">News & Updates</a>
+                <Link href="/news" className="hover:text-white">
+                  News & Updates
                 </Link>
               </li>
               <li>
-                <Link href="/rewards">
-                  <a className="hover:text-white">Rewards Program</a>
+                <Link href="/rewards" className="hover:text-white">
+                  Rewards Program
                 </Link>
               </li>
             </ul>
