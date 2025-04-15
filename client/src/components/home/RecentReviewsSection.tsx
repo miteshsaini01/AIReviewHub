@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { fetchRecentReviews, fetchUserById, fetchAiModelById, formatRelativeTime } from "@/lib/data";
+import { fetchRecentReviews, fetchUserById, fetchAiModelById, fetchReviewById, formatRelativeTime } from "@/lib/data";
 import { ArrowRight, ThumbsUp, MessageSquare } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
