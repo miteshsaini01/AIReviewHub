@@ -22,7 +22,14 @@ const Leaderboard = () => {
     "Text Generation",
     "Image Generation",
     "Voice AI",
-    "Code Assistants"
+    "Code Assistants",
+    "Multimodal",
+    "Video Generation",
+    "Language Translation",
+    "Data Analysis",
+    "Music Generation",
+    "RAG Systems",
+    "Agents"
   ];
   
   const { data: models, isLoading } = useQuery({

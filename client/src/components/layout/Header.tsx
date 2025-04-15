@@ -77,16 +77,21 @@ const Header = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Avatar className="h-8 w-8 cursor-pointer">
-                    <AvatarImage src={user.avatar} alt={`${user.name} avatar`} />
-                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    <AvatarImage src={user.avatar || undefined} alt={`${user.name || user.username} avatar`} />
+                    <AvatarFallback>{(user.name || user.username).charAt(0).toUpperCase()}</AvatarFallback>
                   </Avatar>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent align="end">
                   <div className="flex items-center justify-start gap-2 p-2">
                     <div className="flex flex-col space-y-1 leading-none">
-                      <p className="font-medium">{user.name}</p>
-                      <p className="text-sm text-muted-foreground">
-                        {user.email}
+                      <p className="font-medium">{user.name || user.username}</p>
+                      {user.email && (
+                        <p className="text-sm text-muted-foreground">
+                          {user.email}
+                        </p>
+                      )}
+                      <p className="text-xs text-primary font-medium">
+                        {user.points} points
                       </p>
                     </div>
                   </div>
