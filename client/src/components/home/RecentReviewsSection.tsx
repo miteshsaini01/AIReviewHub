@@ -82,36 +82,36 @@ const ReviewCard = ({ reviewId }: ReviewCardProps) => {
       <CardContent className="p-5">
         <div className="flex items-start">
           <Avatar className="w-12 h-12 mr-4">
-            <AvatarImage src={user.avatar} alt={`${user.name} avatar`} />
-            <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+            <AvatarImage src={user?.avatar || undefined} alt={`${user?.name || 'User'} avatar`} />
+            <AvatarFallback>{(user?.name || 'U').charAt(0).toUpperCase()}</AvatarFallback>
           </Avatar>
           <div className="flex-1">
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-medium text-neutral-900">{user.name}</h3>
+                <h3 className="font-medium text-neutral-900">{user?.name || 'Anonymous User'}</h3>
                 <div className="text-sm text-neutral-500">
-                  Reviewed <Link href={`/model/${model.id}`} className="text-primary font-medium">{model.name}</Link>
+                  Reviewed <Link href={`/model/${model?.id || 0}`} className="text-primary font-medium">{model?.name || 'Unknown Model'}</Link>
                 </div>
               </div>
-              <Rating value={review.rating} />
+              <Rating value={review?.rating || 0} />
             </div>
             <div className="mt-2">
-              <h4 className="font-medium">{review.title}</h4>
-              <p className="mt-1 text-sm text-neutral-600">{review.content}</p>
+              <h4 className="font-medium">{review?.title || 'Untitled Review'}</h4>
+              <p className="mt-1 text-sm text-neutral-600">{review?.content || 'No content available'}</p>
             </div>
             <div className="mt-3 flex flex-wrap gap-2">
               <span className="px-2 py-1 bg-neutral-100 text-neutral-600 rounded-md text-xs">
-                {formatRelativeTime(review.createdAt)}
+                {formatRelativeTime(review?.createdAt || new Date())}
               </span>
             </div>
             <div className="mt-3 flex items-center text-sm text-neutral-500 space-x-4">
               <Button variant="ghost" size="sm" className="h-auto p-1 text-neutral-500 hover:text-neutral-700">
                 <ThumbsUp className="mr-1 h-4 w-4" />
-                <span>{review.helpfulVotes} Helpful</span>
+                <span>{review?.helpfulVotes || 0} Helpful</span>
               </Button>
               <Button variant="ghost" size="sm" className="h-auto p-1 text-neutral-500 hover:text-neutral-700">
                 <MessageSquare className="mr-1 h-4 w-4" />
-                <span>{review.commentCount} Comments</span>
+                <span>{review?.commentCount || 0} Comments</span>
               </Button>
             </div>
           </div>

@@ -133,7 +133,7 @@ const AiModelCard = ({ model, rank }: AiModelCardProps) => {
     <Card className="bg-white hover:shadow-lg transition-shadow overflow-hidden border border-neutral-200">
       <div className="relative">
         <img 
-          src={model.imageUrl}
+          src={model.imageUrl || undefined}
           alt={`${model.name} interface`} 
           className="w-full h-48 object-cover"
         />
@@ -145,32 +145,32 @@ const AiModelCard = ({ model, rank }: AiModelCardProps) => {
         <div className="flex items-center justify-between">
           <h3 className="text-lg font-bold font-heading">{model.name}</h3>
           <div className="flex items-center">
-            <div className="text-sm font-bold text-neutral-900">{model.avgRating.toFixed(1)}</div>
+            <div className="text-sm font-bold text-neutral-900">{(model.avgRating ?? 0).toFixed(1)}</div>
             <div className="ml-1">
-              <Rating value={model.avgRating} />
+              <Rating value={model.avgRating ?? 0} />
             </div>
           </div>
         </div>
         <p className="mt-2 text-sm text-neutral-600">{model.description}</p>
         <div className="mt-3 flex flex-wrap gap-2">
           <span className="px-2 py-1 bg-primary-50 text-primary-700 rounded-md text-xs font-medium">{model.category}</span>
-          <span className="px-2 py-1 bg-neutral-100 text-neutral-700 rounded-md text-xs font-medium">{model.reviewCount.toLocaleString()} reviews</span>
+          <span className="px-2 py-1 bg-neutral-100 text-neutral-700 rounded-md text-xs font-medium">{(model.reviewCount ?? 0).toLocaleString()} reviews</span>
         </div>
         <div className="mt-4 pt-4 border-t border-neutral-200">
           <div className="grid grid-cols-3 gap-2 text-xs text-neutral-500">
             <ProgressMeter 
               label="Accuracy" 
-              value={model.accuracyScore} 
+              value={model.accuracyScore ?? 0} 
               size="sm"
             />
             <ProgressMeter 
               label="Ease of Use" 
-              value={model.easeOfUseScore} 
+              value={model.easeOfUseScore ?? 0} 
               size="sm"
             />
             <ProgressMeter 
               label="Innovation" 
-              value={model.innovationScore} 
+              value={model.innovationScore ?? 0} 
               size="sm"
             />
           </div>

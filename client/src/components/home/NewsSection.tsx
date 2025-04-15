@@ -36,8 +36,8 @@ const NewsSection = () => {
               category={article.category}
               title={article.title}
               summary={article.summary}
-              imageUrl={article.imageUrl}
-              createdAt={article.createdAt}
+              imageUrl={article.imageUrl || undefined}
+              createdAt={article.createdAt || new Date()}
             />
           ))
         ) : (
