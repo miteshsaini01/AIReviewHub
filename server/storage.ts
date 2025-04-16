@@ -316,12 +316,38 @@ export class MemStorage implements IStorage {
       name: "GPT-4",
       description: "Advanced natural language processing model by OpenAI that can understand and generate human-like text.",
       category: "Text Generation",
+      provider: "OpenAI",
       imageUrl: "https://images.unsplash.com/photo-1673299293952-5b8e1558dc3d?auto=format&fit=crop&q=80&w=600",
+      releaseDate: new Date("2023-03-14"),
+      
+      // User ratings
       avgRating: 4.9,
       reviewCount: 2341,
       accuracyScore: 9.5,
       easeOfUseScore: 9.0,
       innovationScore: 9.8,
+      
+      // Technical metrics
+      reasoningScore: 9.7,
+      knowledgeScore: 9.5, 
+      speedScore: 8.8,
+      contextWindow: 128000,
+      trainingCutoff: "April 2023",
+      costPerToken: 0.06,
+      
+      // Performance metrics
+      wordErrorRate: 0.04,
+      speedFactor: 165,
+      aiScore: 9.6,
+      
+      // Additional details
+      capabilities: ["Text generation", "Code generation", "Data analysis", "Reasoning", "Translation"],
+      technicalDetails: {
+        parameters: "1.76 trillion",
+        architecture: "Transformer",
+        training: "Reinforcement Learning from Human Feedback",
+        modality: "Text, Image"
+      },
       createdAt: new Date()
     };
     
@@ -330,12 +356,37 @@ export class MemStorage implements IStorage {
       name: "Midjourney",
       description: "AI-powered text-to-image generator that creates stunning artwork and visual content from text descriptions.",
       category: "Image Generation",
+      provider: "Midjourney Inc.",
       imageUrl: "https://images.unsplash.com/photo-1679958157985-8a93c00e731c?auto=format&fit=crop&q=80&w=600",
+      releaseDate: new Date("2023-07-27"),
+      
+      // User ratings
       avgRating: 4.8,
       reviewCount: 1982,
       accuracyScore: 9.2,
       easeOfUseScore: 8.5,
       innovationScore: 9.6,
+      
+      // Technical metrics
+      reasoningScore: 7.2,
+      knowledgeScore: 8.9, 
+      speedScore: 9.4,
+      contextWindow: 0,
+      trainingCutoff: "June 2023",
+      costPerToken: 0.0,
+      
+      // Performance metrics
+      wordErrorRate: 0.0,
+      speedFactor: 132,
+      aiScore: 9.2,
+      
+      // Additional details
+      capabilities: ["Image generation", "Style transfer", "Art creation", "Design visualization"],
+      technicalDetails: {
+        architecture: "Diffusion model",
+        training: "Contrastive learning",
+        modality: "Text to Image"
+      },
       createdAt: new Date()
     };
     
@@ -344,12 +395,38 @@ export class MemStorage implements IStorage {
       name: "Claude",
       description: "AI assistant by Anthropic designed to be helpful, harmless, and honest in its responses to complex queries.",
       category: "Text Generation",
+      provider: "Anthropic",
       imageUrl: "https://images.unsplash.com/photo-1684391962108-ab2d561846a4?auto=format&fit=crop&q=80&w=600",
+      releaseDate: new Date("2023-12-15"),
+      
+      // User ratings
       avgRating: 4.7,
       reviewCount: 1740,
       accuracyScore: 9.4,
       easeOfUseScore: 9.2,
       innovationScore: 9.3,
+      
+      // Technical metrics
+      reasoningScore: 9.5,
+      knowledgeScore: 9.2, 
+      speedScore: 9.0,
+      contextWindow: 100000,
+      trainingCutoff: "January 2023",
+      costPerToken: 0.045,
+      
+      // Performance metrics
+      wordErrorRate: 0.038,
+      speedFactor: 178,
+      aiScore: 9.4,
+      
+      // Additional details
+      capabilities: ["Text generation", "Summarization", "Content creation", "Reasoning", "Translation"],
+      technicalDetails: {
+        parameters: "1.5 trillion",
+        architecture: "Transformer",
+        training: "Constitutional AI",
+        modality: "Text" 
+      },
       createdAt: new Date()
     };
     

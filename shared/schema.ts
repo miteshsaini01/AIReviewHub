@@ -20,12 +20,33 @@ export const aiModels = pgTable("ai_models", {
   name: text("name").notNull(),
   description: text("description").notNull(),
   category: text("category").notNull(),
+  provider: text("provider").notNull().default("Unknown"),
   imageUrl: text("image_url"),
+  releaseDate: timestamp("release_date").defaultNow(),
+  
+  // User ratings
   avgRating: real("avg_rating").default(0),
   reviewCount: integer("review_count").default(0),
   accuracyScore: real("accuracy_score").default(0),
   easeOfUseScore: real("ease_of_use_score").default(0),
   innovationScore: real("innovation_score").default(0),
+  
+  // Technical metrics
+  reasoningScore: real("reasoning_score").default(0),
+  knowledgeScore: real("knowledge_score").default(0), 
+  speedScore: real("speed_score").default(0),
+  contextWindow: integer("context_window").default(0), // in tokens
+  trainingCutoff: text("training_cutoff").default("Unknown"),
+  costPerToken: real("cost_per_token").default(0), // in USD per 1000 tokens
+  
+  // Performance metrics
+  wordErrorRate: real("word_error_rate").default(0),
+  speedFactor: real("speed_factor").default(0),
+  aiScore: real("ai_score").default(0), // Combined score for ranking
+  
+  // Additional details
+  capabilities: json("capabilities").$type<string[]>().default([]),
+  technicalDetails: json("technical_details").$type<Record<string, any>>().default({}),
   createdAt: timestamp("created_at").defaultNow(),
 });
 
@@ -76,11 +97,21 @@ export const insertUserSchema = createInsertSchema(users).omit({
 
 export const insertAiModelSchema = createInsertSchema(aiModels).omit({
   id: true,
+  // User ratings
   avgRating: true,
   reviewCount: true,
   accuracyScore: true,
   easeOfUseScore: true,
   innovationScore: true,
+  
+  // Omit auto-calculated metrics
+  reasoningScore: true,
+  knowledgeScore: true,
+  speedScore: true,
+  wordErrorRate: true,
+  speedFactor: true,
+  aiScore: true,
+  
   createdAt: true,
 });
 
