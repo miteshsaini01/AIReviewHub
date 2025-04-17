@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useRoute, Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
-import { fetchAiModelById, fetchReviewsByModelId, fetchUserById, formatRelativeTime } from "@/lib/data";
+import { fetchAiModelById, fetchReviewsByModelId, fetchUserById, formatRelativeTime, fetchReviewById } from "@/lib/data";
 import { Rating } from "@/components/ui/rating";
 import { ProgressMeter } from "@/components/ui/progress-meter";
 import { Button } from "@/components/ui/button";
@@ -120,7 +120,7 @@ const AiModel = () => {
             <div className="bg-white rounded-xl shadow-md overflow-hidden border border-neutral-200">
               <div className="relative">
                 <img 
-                  src={model.imageUrl} 
+                  src={model.imageUrl ?? undefined}
                   alt={`${model.name} interface`} 
                   className="w-full aspect-video object-cover"
                 />
@@ -132,15 +132,15 @@ const AiModel = () => {
                 <div className="flex justify-between items-center mb-3">
                   <h1 className="text-2xl font-bold font-heading">{model.name}</h1>
                   <div className="flex items-center">
-                    <span className="font-bold mr-1">{model.avgRating.toFixed(1)}</span>
-                    <Rating value={model.avgRating} />
+                    <span className="font-bold mr-1">{(model.avgRating ?? 0).toFixed(1)}</span>
+                    <Rating value={model.avgRating ?? 0} />
                   </div>
                 </div>
                 <Badge className="bg-primary-50 text-primary-700 hover:bg-primary-100 border-primary-200">
                   {model.category}
                 </Badge>
                 <div className="mt-4">
-                  <div className="text-sm text-neutral-500 mb-2">{model.reviewCount.toLocaleString()} reviews</div>
+                  <div className="text-sm text-neutral-500 mb-2">{(model.reviewCount ?? 0).toLocaleString()} reviews</div>
                   <Link href={`/add-review?modelId=${model.id}`}>
                     <Button className="w-full">
                       <Plus className="mr-2 h-4 w-4" />
@@ -164,7 +164,7 @@ const AiModel = () => {
                   <div>
                     <ProgressMeter 
                       label="Accuracy" 
-                      value={model.accuracyScore} 
+                      value={model.accuracyScore ?? 0}
                       size="md"
                       className="mb-4"
                     />
@@ -172,7 +172,7 @@ const AiModel = () => {
                   <div>
                     <ProgressMeter 
                       label="Ease of Use" 
-                      value={model.easeOfUseScore} 
+                      value={model.easeOfUseScore ?? 0}
                       size="md"
                       className="mb-4"
                     />
@@ -180,7 +180,7 @@ const AiModel = () => {
                   <div>
                     <ProgressMeter 
                       label="Innovation" 
-                      value={model.innovationScore} 
+                      value={model.innovationScore ?? 0}
                       size="md"
                       className="mb-4"
                     />
@@ -211,7 +211,7 @@ const AiModel = () => {
                     ))}
                   </div>
                 ) : (
-                  <div className="text-center py-8 bg-neutral-50 rounded-lg">
+                  <div className="text-center py-8 bg-background rounded-lg">
                     <p className="text-neutral-500 mb-4">No reviews yet for this model.</p>
                     <Link href={`/add-review?modelId=${model.id}`}>
                       <Button>
@@ -313,7 +313,7 @@ const ReviewCard = ({ reviewId }: ReviewCardProps) => {
       <CardContent className="p-5">
         <div className="flex items-start">
           <Avatar className="w-12 h-12 mr-4">
-            <AvatarImage src={user.avatar} alt={`${user.name} avatar`} />
+            <AvatarImage src={user.avatar ?? undefined} alt={`${user.name} avatar`} />
             <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
           </Avatar>
           <div className="flex-1">
@@ -321,7 +321,7 @@ const ReviewCard = ({ reviewId }: ReviewCardProps) => {
               <div>
                 <h3 className="font-medium text-neutral-900">{user.name}</h3>
                 <div className="text-sm text-neutral-500">
-                  {formatRelativeTime(review.createdAt)}
+                  {formatRelativeTime(review.createdAt ?? new Date())}
                 </div>
               </div>
               <Rating value={review.rating} />

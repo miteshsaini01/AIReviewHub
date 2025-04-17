@@ -2,11 +2,11 @@ import { Link } from "wouter";
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-800 text-neutral-300 py-10 mt-12">
+    <footer className="bg-background text-muted-foreground py-10 mt-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-white font-bold mb-4">AI Review Hub</h3>
+            <h3 className="text-foreground font-bold mb-4">AI Review Hub</h3>
             <p className="text-sm">The go-to destination for AI enthusiasts, developers, and everyday users to review, rate, and discover artificial intelligence models.</p>
             <div className="mt-4 flex space-x-4">
               <a href="#" className="text-neutral-400 hover:text-white">
@@ -78,7 +78,7 @@ const Footer = () => {
           </div>
         </div>
         
-        <div className="mt-8 pt-8 border-t border-neutral-700 text-sm text-neutral-400 flex flex-col md:flex-row justify-between items-center">
+        <div className="mt-8 pt-8 border-t border-border text-sm text-muted-foreground flex flex-col md:flex-row justify-between items-center">
           <div>© {new Date().getFullYear()} AI Review Hub. All rights reserved.</div>
           <div className="mt-4 md:mt-0">Made with ❤️ for AI enthusiasts worldwide</div>
         </div>

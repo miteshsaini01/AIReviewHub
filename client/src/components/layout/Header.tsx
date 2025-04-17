@@ -43,18 +43,11 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <Link href="/" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Home
-            </Link>
-            <Link href="/leaderboard" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/leaderboard' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Leaderboard
-            </Link>
-            <Link href="/news" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/news' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              News
-            </Link>
-            <Link href="/rewards" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/rewards' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Rewards
-            </Link>
+            <Link href="/" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>Home</Link>
+            <Link href="/compare" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/compare' || location === '/leaderboard' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>Compare</Link>
+            <Link href="/models" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/models' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>Models</Link>
+            <Link href="/news" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/news' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>News</Link>
+            <Link href="/rewards" className={`px-3 py-2 rounded-md text-sm font-medium ${location === '/rewards' ? 'text-primary' : 'text-neutral-600 hover:bg-primary-50'}`}>Rewards</Link>
           </nav>
 
           {/* User Actions */}
@@ -130,18 +123,11 @@ const Header = () => {
       {mobileMenuOpen && (
         <div className="md:hidden bg-white shadow-md">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <Link href="/" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Home
-            </Link>
-            <Link href="/leaderboard" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/leaderboard' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Leaderboard
-            </Link>
-            <Link href="/news" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/news' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              News
-            </Link>
-            <Link href="/rewards" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/rewards' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>
-              Rewards
-            </Link>
+            <Link href="/" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>Home</Link>
+            <Link href="/compare" className={`block px-3 py-2 rounded-md text-base font-medium ${(location === '/compare' || location === '/leaderboard') ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>Compare</Link>
+            <Link href="/models" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/models' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>Models</Link>
+            <Link href="/news" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/news' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>News</Link>
+            <Link href="/rewards" className={`block px-3 py-2 rounded-md text-base font-medium ${location === '/rewards' ? 'text-primary bg-primary-50' : 'text-neutral-600 hover:bg-primary-50'}`}>Rewards</Link>
             
             {user ? (
               <>

@@ -15,6 +15,8 @@ import News from "./pages/news";
 import Rewards from "./pages/rewards";
 import Profile from "./pages/profile";
 import AuthPage from "./pages/auth-page";
+import Compare from "./pages/compare";
+import Models from "./pages/models";
 
 function Router() {
   return (
@@ -27,6 +29,9 @@ function Router() {
       <Route path="/rewards" component={Rewards} />
       <ProtectedRoute path="/profile" component={Profile} />
       <Route path="/auth" component={AuthPage} />
+      <Route path="/compare" component={Compare} />
+      <Route path="/models" component={Models} />
+      <Route path="/leaderboard" component={Compare} />
       <Route component={NotFound} />
     </Switch>
   );

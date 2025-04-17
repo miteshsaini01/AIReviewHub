@@ -9,7 +9,7 @@ const StatsSection = () => {
   });
 
   return (
-    <section className="bg-white rounded-xl shadow-md py-6 px-8 mb-12">
+    <section className="bg-background rounded-xl shadow-md py-6 px-8 mb-12">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
         <StatItem 
           label="AI Models" 
@@ -47,7 +47,7 @@ interface StatItemProps {
 const StatItem = ({ label, value, suffix = "", isLoading }: StatItemProps) => {
   return (
     <div className="text-center">
-      <p className="text-neutral-500 text-sm">{label}</p>
+      <p className="text-muted-foreground text-sm">{label}</p>
       {isLoading ? (
         <Skeleton className="h-9 w-24 mx-auto mt-1" />
       ) : (

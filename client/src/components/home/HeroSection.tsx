@@ -6,10 +6,10 @@ const HeroSection = () => {
     <section className="py-12 md:py-16">
       <div className="grid md:grid-cols-2 gap-12 items-center">
         <div>
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-neutral-900 font-heading">
+          <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground font-heading">
             Review, Rate & Discover <span className="text-primary">AI Models</span>
           </h1>
-          <p className="mt-4 text-xl text-neutral-600">
+          <p className="mt-4 text-xl text-muted-foreground">
             Join the community of AI enthusiasts and help shape the future of artificial intelligence through your reviews.
           </p>
           <div className="mt-8 flex flex-col sm:flex-row gap-4">
@@ -40,7 +40,7 @@ const HeroSection = () => {
                 alt="User avatar" 
               />
             </div>
-            <span className="text-sm text-neutral-600">Join <span className="font-medium text-neutral-900">5,000+</span> active reviewers</span>
+            <span className="text-sm text-muted-foreground">Join <span className="font-medium text-foreground">5,000+</span> active reviewers</span>
           </div>
         </div>
         <div className="relative">
@@ -52,7 +52,7 @@ const HeroSection = () => {
             />
             <div className="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent mix-blend-multiply"></div>
           </div>
-          <div className="absolute -bottom-5 -left-5 bg-white rounded-lg p-4 shadow-lg max-w-xs">
+          <div className="absolute -bottom-5 -left-5 bg-background rounded-lg p-4 shadow-lg max-w-xs">
             <div className="flex items-center space-x-2">
               <div className="text-accent-500">
                 <i className="ri-award-fill text-2xl"></i>
